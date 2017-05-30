@@ -43,8 +43,8 @@ public class Autentificar {
     public Autentificar(){
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-        .setOAuthConsumerKey("dhBekEC7YAZwzFQOZY9G0vwwQ")
-        .setOAuthConsumerSecret("OGjNkJhJvE2WTQkSqrIOi9UHW2rJaonaomgES8IEuIVbTdgiLo")
+        .setOAuthConsumerKey("gQIkby2YpOYLR56QKVzmMdnZ6")
+        .setOAuthConsumerSecret("AW1kIlE9lL0jCG0nOrRZiqztKwGkESsmp9mQfRBMWLJ7yCV0Op")
         .setOAuthAccessToken("843737127691173888-6rDKy9Q9XOOgCNpjH6907v46dTA2Rre")
         .setOAuthAccessTokenSecret("Ezl4IJt00FRvDDIoCnk1uqI12CSPKYrBRdCZpgX73NawK");
         TwitterFactory tf = new TwitterFactory(cb.build());
