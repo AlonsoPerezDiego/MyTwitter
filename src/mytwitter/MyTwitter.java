@@ -20,6 +20,7 @@ public class MyTwitter {
      */
     public static void main(String[] args) {
         Autentificar obj = new Autentificar();
+        obj.config();
         int select;
         do{
         select = Integer.parseInt(JOptionPane.showInputDialog("1: Enviar tweet.\n2: Ver tweets.\n3: Enviar mensaje directo.\n4: Buscar tweets.\n5:Salir."));
