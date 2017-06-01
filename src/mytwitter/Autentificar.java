@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package mytwitter;
+
 /**
  *
  * @author Diego
@@ -25,39 +26,31 @@ import twitter4j.*;
 
 /**
  * Todos lo métodos para en funcionamiento de twitter.
+ *
  * @author Diego
  */
 public class Autentificar {
-    
+
     static Status status;
-    static List<Status> statuses;
+    static ResponseList <twitter4j.Status> statuses;
     static DirectMessage message;
     static QueryResult result;
     static Twitter twitter;
-//    static ArrayList <TimeLineInfo> timeLine;
-//    static Iterator <Status> myIterator;
 
     /**
-     * Autentifican los datos para la aplicación.
+     * Autentifican los datos del usuario y los token para la aplicación.
      */
-    public Autentificar(){
+    public void config() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true)
-        .setOAuthConsumerKey("gQIkby2YpOYLR56QKVzmMdnZ6")
-        .setOAuthConsumerSecret("AW1kIlE9lL0jCG0nOrRZiqztKwGkESsmp9mQfRBMWLJ7yCV0Op")
-        .setOAuthAccessToken("843737127691173888-6rDKy9Q9XOOgCNpjH6907v46dTA2Rre")
-        .setOAuthAccessTokenSecret("Ezl4IJt00FRvDDIoCnk1uqI12CSPKYrBRdCZpgX73NawK");
         TwitterFactory tf = new TwitterFactory(cb.build());
         twitter = tf.getInstance();
-//        timeLine = new ArrayList<TimeLineInfo>();
-//        myIterator ;
     }
-    
     /**
      * Publica un tweet.
-     * @param latestStatus 
+     *
+     * @param latestStatus
      */
-    public static void postATweet(String latestStatus){
+    public static void postATweet(String latestStatus) {
         try {
             status = twitter.updateStatus(latestStatus);
         } catch (TwitterException ex) {
@@ -65,12 +58,13 @@ public class Autentificar {
         }
         System.out.println("Successfully updated the status to [" + status.getText() + "].");
     }
-    
+
     /**
      * Muestra todos los tweets.
-     * @param confirmacion 
+     *
+     * @param confirmacion
      */
-    public static void getTimeline(String confirmacion){
+    public static void getTimeline(String confirmacion) {
         //Twitter twitter = TwitterFactory.getSingleton();
         try {
             statuses = twitter.getHomeTimeline();
@@ -80,18 +74,19 @@ public class Autentificar {
         }
         System.out.println("Showing home timeline.");
         for (Status status : statuses) {
-        System.out.println(status.getUser().getName() + ":" + status.getText());
+            System.out.println(status.getUser().getName() + ":" + status.getText());
 //        timeLine.add(new TimeLineInfo(status.getUser().getName(), status.getText()));
         }
     }
-    
+
     /**
      * Envia un mensaje directo al usuario que se introduzca.
+     *
      * @param recipientId
-     * @param texto 
+     * @param texto
      */
-    public static void directMessages(String recipientId, String texto){
-        
+    public static void directMessages(String recipientId, String texto) {
+
 //        Twitter twitter = TwitterFactory.getSingleton();
         try {
             message = twitter.sendDirectMessage(recipientId, texto);
@@ -100,12 +95,13 @@ public class Autentificar {
         }
         System.out.println("Sent: " + message.getText() + " to @" + message.getRecipientScreenName());
     }
-    
+
     /**
      * Busca un hashtag.
-     * @param dato 
+     *
+     * @param dato
      */
-    public static void searchTweet(String dato){
+    public static void searchTweet(String dato) {
 //        Twitter twitter = TwitterFactory.getSingleton();
         Query query = new Query(dato);
         try {
